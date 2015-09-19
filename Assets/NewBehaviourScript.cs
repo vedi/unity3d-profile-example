@@ -46,18 +46,18 @@ public class NewBehaviourScript : MonoBehaviour {
 		Action unsubscribeAll = delegate() {
         };
         
-		Action<Provider, string> onLoginStarted = delegate(Provider provider, string payload) {
+		Action<Provider, bool, string> onLoginStarted = delegate(Provider provider, bool autoLogin, string payload) {
 			Debug.Log("OnLoginStarted");
         };
-        Action<Provider, string> onLoginCancelled = delegate(Provider provider, string payload) {
+        Action<Provider, bool, string> onLoginCancelled = delegate(Provider provider, bool autoLogin, string payload) {
 			Debug.Log("onLoginCancelled");
 			unsubscribeAll();
 		};
-		Action<Provider, string, string> onLoginFailed = delegate(Provider provider, string message, string payload) {
+		Action<Provider, string, bool, string> onLoginFailed = delegate(Provider provider, string message, bool autoLogin, string payload) {
 			Debug.Log("onLoginFailed");
 			unsubscribeAll();
         };
-		Action<UserProfile, string> onLoginFinished = delegate(UserProfile userProfile, string payload) {
+		Action<UserProfile, bool, string> onLoginFinished = delegate(UserProfile userProfile, bool autoLogin, string payload) {
 			Debug.Log("OnLoginFinished");
 			unsubscribeAll();
         };
